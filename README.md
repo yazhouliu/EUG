@@ -59,7 +59,13 @@ The model we chose to use is detailed below,you need to go to the official repo 
 **NOTE**:&nbsp;PSP_s2 is trained by us.
 
 ### 3.3 Set up the path of checkpoints and configs
-corresponding to the checkpoint and config file of the base model in config.py
+To start training the model, first you need to modify the weights and configuration file paths for the base model in the configuration file. The location of the configuration file is '/exp_config/defaults.py', and the configuration items that need to be modified are as follows:
+```
+_C.EXPERIMENT.CONFIG_FILE1='xxx'
+_C.EXPERIMENT.CONFIG_FILE2='xxx'
+_C.EXPERIMENT.CHECKPOINT_FILE1='xxx'
+_C.EXPERIMENT.CHECKPOINT_FILE2='xxx'
+```
 
 ### 3.4 Training
 ```
@@ -86,13 +92,15 @@ python train.py --model_name eug_heter
 + LaF
 + Road Anomaly
 + Road Obstacle
+ 
+3. Testing
 
-
-3. Modify the path of the test dataset, output directory and fuse_decoder checkpoint  in **test.py** 
-4. Testing
+Execute the following code to perform inference for the model.
 ```
 python inference.py --ckpt_path --out_dir --img_dir
 ```
+'ckpt_path' is the storage path for the fuse_decoder's weights, 'out_dir' is the storage location for inference results, and 'img_dir' is the storage location for test images.
+
 **NOTE**: &nbsp;The generated color images are for visualization and the grey scale images can be used for evaluation.
 
 ---
